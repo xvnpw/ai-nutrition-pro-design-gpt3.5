@@ -2,7 +2,7 @@
 
 > ⚠️ This is experimental project. It has nothing to do with any existing or future real project. Its name is fake and not related to any existing product or company. It's only for educational purposes.
 
-Research project on AI usefulness in [DevSecOps](https://dsomm.owasp.org/). For **design** phase and using **GPT-3.5**
+Research project on AI usefulness in [DevSecOps](https://dsomm.owasp.org/). For **design** phase and using OpenAI **GPT-3.5**
 
 ## DevSecOps background
 
@@ -19,7 +19,7 @@ The aim of this research is to answer the question of whether or not the current
 
 ## Input Data & Results
 
-Each time input data are updated, [github action](https://github.com/xvnpw/ai-threat-modeling-action) runs, query is sent to ChatGPT-3.5 and results are committed back to repository as output.
+Each time input data are updated, [github action](https://github.com/xvnpw/ai-threat-modeling-action) runs, query is sent to GPT-3.5 and results are committed back to repository as output.
 
 Workflow can directly push into repository or create pull request. User Stories can be created as issues and bot will add comment with output.
 
