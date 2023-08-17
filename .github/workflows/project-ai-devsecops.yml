@@ -30,18 +30,18 @@ jobs:
           verbose: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
-      # - name: Create Pull Request
-      #   uses: peter-evans/create-pull-request@v5
-      #   with:
-      #     branch: create-pull-request/project
-      #     title: (AI Generated) High Level Security and Privacy Requirements
-      #     body: Automated pull request based on your changes to project. Please review it carefully.
-      #     labels: 'security, ai'
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v5
+        with:
+          branch: create-pull-request/project
+          title: (AI Generated) High Level Security and Privacy Requirements
+          body: Automated pull request based on your changes to project. Please review it carefully.
+          labels: 'security, ai'
       # Uncomment if you want directly push into repo instead of Pull Request
       # and comment 'Create Pull Request' step
-      - name: Commit changes
-        uses: EndBug/add-and-commit@v9
-        with:
-          message: 'Project security requirements'
-          add: 'PROJECT_SECURITY.md'
-          pull: '--rebase --autostash'
+      # - name: Commit changes
+      #   uses: EndBug/add-and-commit@v9
+      #   with:
+      #     message: 'Project security requirements'
+      #     add: 'PROJECT_SECURITY.md'
+      #     pull: '--rebase --autostash'
