@@ -21,4 +21,4 @@ Based on the provided user story, architecture description, and architecture thr
 - **AC13:** The API Database must regularly update and patch to address any known vulnerabilities.
 - **AC14:** The API Database must have regular backups and disaster recovery mechanisms to ensure data integrity and availability.
 
-Please note that these acceptance criteria are specific to the specified architecture containers, services, or applications and do not include acceptance criteria for other components or data flows not mentioned in the user story.
+Please note that these acceptance criteria are specific to the mentioned architecture containers, services, or applications and do not include acceptance criteria for other components or data flows not included in the user story.
