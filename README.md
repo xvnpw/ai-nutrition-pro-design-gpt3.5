@@ -31,7 +31,7 @@ Workflow can directly push into repository or create pull request. User Stories 
 
 Check my [blog post](https://xvnpw.github.io/posts/leveraging-llms-for-threat-modelling-gpt-3.5/) if you want to learn how I approached this research and interpreted results.
 
-If you want to talk, I on [X/Twitter](https://twitter.com/xvnpw).
+If you want to talk, I'm on [X/Twitter](https://twitter.com/xvnpw).
 
 ## Fork
 
