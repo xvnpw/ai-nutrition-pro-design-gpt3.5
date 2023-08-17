@@ -1,0 +1,37 @@
+# Experiment AI Nutrition-Pro
+
+> ⚠️ This is experimental project. It has nothing to do with any existing or future real project. Its name is fake and not related to any existing product or company. It's only for educational purposes.
+
+Research project on AI usefulness in [DevSecOps](https://dsomm.owasp.org/). For **design** phase and using **GPT-3.5**
+
+## DevSecOps background
+
+The most important DevSecOps goals are:
+- shift left security
+- be placed in developers ecosystem (IDE, code hosting, PRs, etc.)
+- provide fast feedback and guidance
+
+For coding phase, we have tools like [semgrep](https://semgrep.dev/blog/2023/using-ai-to-write-secure-code-with-semgrep) that can benefit from AI and LLMs. What about **design** phase? Typical manual activities are: 
+- security design review
+- threat modelling
+
+The aim of this research is to answer the question of whether or not the current state of LLMs can bring meaningful value to those security activities.
+
+## Input Data & Results
+
+Each time input data are updated, [github action](https://github.com/xvnpw/ai-devsecops-action) runs, query is sent to ChatGPT-3.5 and results are committed back to repository as output.
+
+Workflow can directly push into repository or create pull request. User Stories can be created as issues and bot will add comment with output.
+
+| Name | File | Description | Security artefact | Output | 
+| --- | --- | --- | --- | --- |
+| Project description | [PROJECT.md](./PROJECT.md) | High level description of the project with business explanation and listed core features | High level security design review | [PROJECT_SECURITY.md](./PROJECT_SECURITY.md) and as [pull request](https://github.com/xvnpw/ai-nutrition-pro-design-gpt3.5/pull/7) |
+| Architecture | [ARCHITECTURE.md](./ARCHITECTURE.md) | Architecture of the solution | Threat Modelling | [ARCHITECTURE_SECURITY.md](./ARCHITECTURE_SECURITY.md) |
+| User stories | [user-stories/*](./user-stories/) <br/> also in [issues](https://github.com/xvnpw/ai-nutrition-pro-design-gpt3.5/issues?q=is%3Aopen+is%3Aissue+label%3Aai-threat-modeling) | Technical and user stories to implement | Security related acceptance criteria | [user-stories/*_SECURITY.md](./user-stories/) <br/> also in [issues](https://github.com/xvnpw/ai-nutrition-pro-design-gpt3.5/issues?q=is%3Aopen+is%3Aissue+label%3Aai-threat-modeling) - as comment |
+
+## Fork
+
+If you would like to try on your own with this experiment:
+
+- fork repository
+- set `OPENAI_API_KEY` in repository secrets
