@@ -29,6 +29,10 @@ Workflow can directly push into repository or create pull request. User Stories 
 | Architecture | [ARCHITECTURE.md](./ARCHITECTURE.md) | Architecture of the solution | Threat Modelling | [ARCHITECTURE_SECURITY.md](./ARCHITECTURE_SECURITY.md) |
 | User stories | [user-stories/*](./user-stories/) <br/> also in [issues](https://github.com/xvnpw/ai-nutrition-pro-design-gpt3.5/issues?q=is%3Aopen+is%3Aissue+label%3Aai-threat-modeling) | Technical and user stories to implement | Security related acceptance criteria | [user-stories/*_SECURITY.md](./user-stories/) <br/> also in [issues](https://github.com/xvnpw/ai-nutrition-pro-design-gpt3.5/issues?q=is%3Aopen+is%3Aissue+label%3Aai-threat-modeling) - as comment |
 
+Check my [blog post](https://xvnpw.github.io/posts/leveraging-llms-for-threat-modelling-gpt-3.5/) if you want to learn how I approached this research and interpreted results.
+
+If you want to talk, I on [X/Twitter](https://twitter.com/xvnpw).
+
 ## Fork
 
 If you would like to try on your own with this experiment:
