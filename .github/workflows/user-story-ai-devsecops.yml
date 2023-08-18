@@ -28,13 +28,13 @@ jobs:
         run: |
           echo "${{ steps.files_check.outputs.all }}"
       - name: Generate user story security acceptance criteria
-        uses: xvnpw/ai-threat-modeling-action@v1.0.1
+        uses: xvnpw/ai-threat-modeling-action@v1.0.2
         with:
           type: 'user-story'
           input_files: "${{ steps.files_check.outputs.all }}"
           input_architecture_files: '["ARCHITECTURE.md"]'
           input_architecture_threat_model_file: "ARCHITECTURE_SECURITY.md"
-          temperature: 0
+          temperature: 0.2
           verbose: true
           model: "gpt-3.5-turbo-16k"
         env:

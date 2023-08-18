@@ -20,12 +20,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
       - name: Generate architecture threat model
-        uses: xvnpw/ai-threat-modeling-action@v1.0.1
+        uses: xvnpw/ai-threat-modeling-action@v1.0.2
         with:
           type: 'architecture'
           input_files: '["ARCHITECTURE.md"]'
           output_file: 'ARCHITECTURE_SECURITY.md'
-          temperature: 0
+          temperature: 0.2
           verbose: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
