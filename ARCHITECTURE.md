@@ -66,7 +66,6 @@ C4Container
 | Name | Type | Description | Responsibilities |
 | --- | --- | --- | --- |
 | Meal Planner application | External system, web application | One of many Meal Planner applications that can be integrated with AI Nutrition-Pro. It connects to AI Nutrition-Pro using REST and HTTPS. | - uploads samples of dietitians' content to AI Nutrition-Pro <br/> - fetches AI generated results, e.g. diet introduction, from AI Nutrition-Pro | 
-| Meal Planner application manager | External person | Employee of Meal Planner | Manages AI Nutrition-Pro integration, e.g. configuration, api keys, billings. |
 | Dietitian | External person | It's a customer of Meal Planner application. It's using Meal Planner to create diets for patients. It will see AI generated content directly in Meal Planner. | - creates diets <br> - consents to AI processing of data |
 |  ChatGPT-3.5 | External system, API | It's OpenAI product, an LLM solution | It will be used to generate content based on provided samples. |
  
@@ -79,8 +78,9 @@ C4Container
 | API Gateway | Internal system, API Gateway | Kong API Gateway | - authentication <br> - rate limiting <br> - filtering of input |
 | API Application | Internal system, API application | It's written using Golang and deployed as Docker container into AWS Elastic Container Service | Provides AI Nutrition-Pro functionality via API. |
 | API database | Internal database, Amazon RDS instance | Stored data: samples of dietitians' content, requests, and responses to LLM. | Storing data for API Application |
-| Administrator | Person | Administrator of AI Nutrition-Pro application. | - manage server configuration <br> - resolve problems <br> |
-| App Onboarding Manager | Person | Employee that is onboarding new Meal Planner applications to AI Nutrition-Pro application. | - manage configuration of integrated Meal Planner application |
+| Administrator | Internal Person | Administrator of AI Nutrition-Pro application. | - manage server configuration <br> - resolve problems <br> |
+| App Onboarding Manager | Internal Person | Employee that is onboarding new Meal Planner applications to AI Nutrition-Pro application. | - manage configuration of integrated Meal Planner application |
+| Meal Planner application manager | Internal Person | Employee of Meal Planner | Manages AI Nutrition-Pro integration, e.g. configuration, api keys, billings. |
 
 ## Deployment diagram
 
