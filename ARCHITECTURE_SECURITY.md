@@ -6,6 +6,12 @@
 | --- | --- | --- | --- | --- | --- | --- |
 
 
+### Data flow 2: AI Nutrition-Pro API Service -> ChatGPT
+
+| Threat Id | Component name | Threat Name | STRIDE category | Explanation | Mitigations | Risk severity |
+| --- | --- | --- | --- | --- | --- | --- |
+
+
 ### Data flow 4: Meal Planner A System -> AI Nutrition-Pro API Service
 
 | Threat Id | Component name | Threat Name | STRIDE category | Explanation | Mitigations | Risk severity |
