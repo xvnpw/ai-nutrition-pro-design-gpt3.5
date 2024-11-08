@@ -46,7 +46,7 @@ jobs:
             });
             return JSON.stringify(fabric_input);
       - name: Generate user story security acceptance criteria
-        uses: xvnpw/fabric-agent-action@v0.0.3
+        uses: xvnpw/fabric-agent-action@v0.0.4
         with:
           input_file: "fabric_input.md"
           output_file: "fabric_output.md"
