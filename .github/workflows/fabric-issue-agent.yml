@@ -46,7 +46,7 @@ jobs:
             });
             return JSON.stringify(fabric_input);
       - name: Generate user story security acceptance criteria
-        uses:  docker://ghcr.io/xvnpw/fabric-agent-action:v0.0.11
+        uses:  docker://ghcr.io/xvnpw/fabric-agent-action:v0.0.12
         with:
           input_file: "fabric_input.md"
           output_file: "fabric_output.md"
