@@ -46,14 +46,15 @@ jobs:
             });
             return JSON.stringify(fabric_input);
       - name: Run fabric-agent-action
-        uses:  docker://ghcr.io/xvnpw/fabric-agent-action:v0.0.13
+        uses:  docker://ghcr.io/xvnpw/fabric-agent-action:v0.0.15
         with:
           input_file: "fabric_input.md"
           output_file: "fabric_output.md"
           fabric_provider: "openrouter"
           fabric_model: "openai/o1-preview"
           fabric_temperature: 0.2
-          debug: false
+          fabric_tools_included: "clean_text,create_stride_threat_model,create_design_document,review_design,refine_design_document,create_threat_scenarios,improve_writing,create_quiz"
+          debug: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
