@@ -8,7 +8,10 @@ on:
 jobs:
   fabric_agent_action:
     name: Run fabric-agent-action on issue comment
-    if: startsWith(github.event.comment.body, '/fabric') && !github.event.issue.pull_request
+    if: >
+      github.event.comment.user.login == 'xvnpw' &&
+      startsWith(github.event.comment.body, '/fabric') &&
+      !github.event.issue.pull_request
     runs-on: ubuntu-latest
     permissions:
       issues: write
