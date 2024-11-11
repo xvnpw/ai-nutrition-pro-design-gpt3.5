@@ -56,7 +56,7 @@ jobs:
           fabric_provider: "openrouter"
           fabric_model: "openai/o1-preview"
           fabric_temperature: 0.2
-          fabric_tools_included: "clean_text,create_stride_threat_model,create_design_document,review_design,refine_design_document,create_threat_scenarios,improve_writing,create_quiz"
+          fabric_tools_included: "clean_text,create_stride_threat_model,create_design_document,review_design,refine_design_document,create_threat_scenarios,improve_writing,create_quiz,create_summary"
           debug: true
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
