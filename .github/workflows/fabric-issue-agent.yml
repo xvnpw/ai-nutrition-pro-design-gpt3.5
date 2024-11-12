@@ -8,7 +8,7 @@ jobs:
     # only comments startsWith /fabric are triggering agent run
     # checks user who commented to avoid abuse
     if: >
-      github.event.comment.user.login == context.repo.owner &&
+      github.event.comment.user.login == github.event.repository.owner.login &&
       startsWith(github.event.comment.body, '/fabric') &&
       !github.event.issue.pull_request
     runs-on: ubuntu-latest
