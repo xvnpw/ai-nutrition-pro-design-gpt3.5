@@ -1,15 +1,14 @@
-name: Run fabric-agent-action on issue comment
+name: Fabric Pattern Processing
 on:
   issue_comment:
-    types:
-      - created
-      - edited
+    types: [created, edited]
 
 jobs:
-  fabric_agent_action:
-    name: Run fabric-agent-action on issue comment
+  process_fabric:
+    # only comments startsWith /fabric are triggering agent run
+    # checks user who commented to avoid abuse
     if: >
-      github.event.comment.user.login == 'xvnpw' &&
+      github.event.comment.user.login == context.repo.owner &&
       startsWith(github.event.comment.body, '/fabric') &&
       !github.event.issue.pull_request
     runs-on: ubuntu-latest
@@ -18,38 +17,37 @@ jobs:
       contents: write
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
-      - uses: actions/github-script@v7
-        id: read-issue-and-comment-script
+
+      # github-script is used to:
+      # 1. fetch issue body and comment body
+      # 2. write comment body to fabric_input.md file
+      # 3. write issue body to fabric_input.md file
+      - name: Prepare Input
+        uses: actions/github-script@v7
+        id: prepare-input
         with:
-          result-encoding: string
-          retries: 3
           script: |
             const issue = await github.rest.issues.get({
-              issue_number: ${{ github.event.issue.number }},
-              owner: "${{ github.repository_owner }}",
-              repo: "${{ github.event.repository.name }}",
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo
             });
-            const issueBody = issue.data.body;
 
             const comment = await github.rest.issues.getComment({
-              comment_id: ${{ github.event.comment.id }},
-              owner: "${{ github.repository_owner }}",
-              repo: "${{ github.event.repository.name }}",
+              comment_id: context.payload.comment.id,
+              owner: context.repo.owner,
+              repo: context.repo.repo
             });
-            const commentBody = comment.data.body;
 
-            const fabric_input = commentBody + "\n\n" + "GitHub issue:\n" + issueBody;
+            const input = `${comment.data.body}\n\nGitHub issue:\n${issue.data.body}`;
+            require('fs').writeFileSync('fabric_input.md', input);
 
-            const fs = require('fs');
-            fs.writeFileSync('${{ github.workspace }}/fabric_input.md', fabric_input, (err) => {
-                if (err) throw err;
-                console.log('Data written to file');
-            });
-            return JSON.stringify(fabric_input);
-      - name: Run fabric-agent-action
-        uses:  docker://ghcr.io/xvnpw/fabric-agent-action:v0.0.17
+            return input;
+
+      - name: Execute Fabric Patterns
+        uses: docker://ghcr.io/xvnpw/fabric-agent-action:v0.0.17
         with:
           input_file: "fabric_input.md"
           output_file: "fabric_output.md"
@@ -61,8 +59,10 @@ jobs:
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
-      - name: Add comment
+
+      # create-or-update-comment is used to save output from agent back to original issue
+      - name: Post Results
         uses: peter-evans/create-or-update-comment@v4
         with:
           issue-number: ${{ github.event.issue.number }}
-          body-path: ${{ github.workspace }}/fabric_output.md
+          body-path: fabric_output.md
